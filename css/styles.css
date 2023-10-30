@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.column {
+    padding: 1em;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    min-height: 70vh;
+}
+
+:root {
+    --left-column-width: 30%;
+    --right-column-width: 30%;
+    --mid-column-width: 30%;
+}
+
+.left {
+    flex: 0 0 var(--left-column-width);
+    margin-right: 0.5em;
+    background-color: rgb(214, 255, 241);
+    align-items: center;
+}
+
+.blocks {
+    display: grid;
+    margin-top: 20px;
+    place-items: center;
+}
+
+.block {
+    display: grid;
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    animation: none;
+    width: 30vw;
+    text-align: center;
+    place-items: center;
+    font-size: 5vh;
+}
+
+@keyframes blink {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.mid {
+    flex: 0 0 var(--mid-column-width);
+    margin-right: 0.5em;
+    background-color: rgb(214, 255, 241);
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrow {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid black;
+}
+
+.button-container {
+    margin-top: 4vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 120px;
+}
+
+button {
+    font-size: 4vh;
+    border-radius: 10px;
+    border-color: black;
+    padding-right: 15px;
+    padding-left: 15px;
+    transition-duration: 0.4s;
+    cursor: grab;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:hover {
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
+    background-color: rgb(61, 3, 66); /* Green */
+    color: white;
+}
+
+.right {
+    flex: 0 0 var(--right-column-width);
+    background-color: rgb(214, 255, 241);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.updiv {
+    background-color: #ccc;
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+.inputs-container {
+    position: absolute;
+    bottom: 0;
+    flex-direction: column; /* Stack children vertically */
+    text-align: center;
+    /* visibility: visible; */
+}
+
+.smallb {
+    font-size: 2.5vh;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+input {
+    margin-top: 20px;
+    font-size: 3vh;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0
+}
+
+/* .button-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; 
+}
+
+.golden-button {
+    background-color: gold;
+    border: none;
+    padding: 10px 20px; 
+    margin: 0 5px;
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+.golden-button:hover {
+    transform: scale(1.1); 
+}
+
+.golden-button:active {
+    transform: scale(0.9); 
+} */

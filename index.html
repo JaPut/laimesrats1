@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesfirework.css">
+    <script src="js/scripts.js" defer></script>
+    <title>Wheel of Fortune</title>
+</head>
+<body>
+    <header>
+        <h1>Laimesrats</h1>
+    </header>
+
+    <main>
+        <div class="column left">
+             <div class="blocks">
+                    <!-- Add names here as per the wheel sections -->
+                    <div class="block" id="block1" data-name="Name1" style="background-color: #50fca6;">IZVĒLE_1</div>
+                    <div class="block" id="block2" data-name="Name2" style="background-color: #4caf50;">IZVĒLE_2</div>
+                    <div class="block" id="block3" data-name="Name3" style="background-color: #f44336;">IZVĒLE_3</div>
+                    <div class="block" id="block4" data-name="Name4" style="background-color: #e91e63;">IZVĒLE_4</div>
+                    <div class="block" id="block5" data-name="Name5" style="background-color: #fbff05;">IZVĒLE_5</div>
+                    <div class="block" id="block6" data-name="Name6" style="background-color: #ffd23c;">IZVĒLE_6</div>
+                    <div class="block" id="block7" data-name="Name7" style="background-color: #3965c4;">IZVĒLE_7</div>
+                    <div class="block" id="block8" data-name="Name8" style="background-color: #2196f3;">IZVĒLE_8</div>
+                </div>
+        </div>
+        <div class="column mid">
+            <div class="container">
+                <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                <div class="arrow"></div>
+                <div class="button-container">
+                    <button id="startBtn">Iegriezt</button>
+                    <button id="restartBtn">Atjaunot</button>
+                </div>
+            </div>
+        </div>
+        <div class="column right">
+            <div class="updiv">
+                <div class="firework" id="firework1">
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                </div>
+                <div class="firework" id="firework2">
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                    <div class="explosion"></div>
+                </div>
+            </div>
+            <div class="inputs-container">
+                <input type="text" id="Name1Input" placeholder="IZVĒLE_1">
+                <input type="text" id="Name2Input" placeholder="IZVĒLE_2">
+                <input type="text" id="Name3Input" placeholder="IZVĒLE_3">
+                <input type="text" id="Name4Input" placeholder="IZVĒLE_4">
+                <input type="text" id="Name5Input" placeholder="IZVĒLE_5">
+                <input type="text" id="Name6Input" placeholder="IZVĒLE_6">
+                <input type="text" id="Name7Input" placeholder="IZVĒLE_7">
+                <input type="text" id="Name8Input" placeholder="IZVĒLE_8">
+                <br>
+                <button class="smallb" id="sendBtn">Iesniegt</button>
+                <button class="smallb" id="refreshBtn">Nodzēst</button>
+            </div>
+    </main>
+   
+    <footer>
+        <!-- <div class="button-row">
+            <button class="golden-button">Button 1</button>
+            <button class="golden-button">Button 2</button>
+            <button class="golden-button">Button 3</button>
+            <button class="golden-button">Button 4</button>
+            <button class="golden-button">Button 5</button>
+            <button class="golden-button">Button 6</button>
+            <button class="golden-button">Button 7</button>
+            <button class="golden-button">Button 8</button>
+        </div> -->
+    </footer>
+</body>
+</html>
