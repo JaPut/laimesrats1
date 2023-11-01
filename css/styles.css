@@ -27,9 +27,9 @@ main {
 }
 
 :root {
-    --left-column-width: 30%;
-    --right-column-width: 30%;
-    --mid-column-width: 30%;
+    --left-column-width: 28%;
+    --right-column-width: 28%;
+    --mid-column-width: 38%;
 }
 
 .left {
@@ -51,16 +51,16 @@ main {
     margin: 5px;
     border-radius: 5px;
     animation: none;
-    width: 30vw;
+    width: 25vw;
     text-align: center;
     place-items: center;
     font-size: 5vh;
 }
 
-@keyframes blink {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
+@keyframes blinkingEffect {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 .mid {
@@ -119,6 +119,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.nos {
+    width: 20%; /* or any specific width you prefer */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .updiv {

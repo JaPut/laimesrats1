@@ -6,7 +6,7 @@ const restartBtn = document.getElementById('restartBtn');
 
 let angle = 0;
 let names = ["Name1", "Name2", "Name3", "Name4", "Name5", "Name6", "Name7", "Name8"];
-let iconChars = ['\uf0e0', '\uf03e', '\uf057', '\uf2bd', '\uf256', '\uf2dc', '\uf186', '\uf0cf'];
+let iconChars = ['\uf0e0', '\uf03e', '\uf057', '\uf2bd', '\uf256', '\uf2dc', '\uf186', '\uf118'];
 let colors = ["#f44336", "#e91e63", "#fbff05", "#ffd23c", "#3965c4", "#2196f3", "#50fca6", "#4caf50"];
 let currentBlock = null;
 
@@ -72,7 +72,7 @@ function spinWheel() {
             triggerFireworks();
         } else {
             // No non-empty block with matching color found, so spin again after a short delay
-            setTimeout(spinWheel, 2000); // 2 second delay before spinning again
+            setTimeout(spinWheel, 5); // 2 second delay before spinning again
         }
     } else {
         speed = Math.max(speed - deceleration, 0); // Ensure speed doesn't become negative
@@ -116,11 +116,49 @@ function triggerFireworks() {
 function highlightBlock() {
   let index = Math.floor((8 - (angle % (Math.PI * 2)) / (Math.PI / 4)) % 8);
   currentBlock = blocks[index];
-    if (currentBlock) {
-        currentBlock.style.animation = 'none';
-    }
-    currentBlock = blocks[index];
-    currentBlock.style.animation = 'blink 0.5s infinite';
+
+  // Hide all blocks
+  blocks.forEach(block => block.style.display = 'none');
+
+  // Show and center the current block within the .blocks container
+  const blocksContainer = document.querySelector('.column.left .blocks');
+  currentBlock.style.display = 'block';
+  currentBlock.style.position = 'absolute';
+  currentBlock.style.top = '50%';
+  currentBlock.style.left = '50%';
+  currentBlock.style.transform = 'translate(-50%, -50%)';
+  currentBlock.style.zIndex = '1000';
+
+  // Set the current block to blink
+  currentBlock.style.animation = 'blinkingEffect 1s infinite';
+
+  // Adjust the size of the .blocks container if necessary
+  blocksContainer.style.position = 'relative';
+  blocksContainer.style.height = '100%'; // Make sure the container is full height
+  blocksContainer.style.display = 'flex';
+  blocksContainer.style.justifyContent = 'center';
+  blocksContainer.style.alignItems = 'center';
+}
+
+function resetBlockPositions() {
+  // Reset the .blocks container styles
+  const blocksContainer = document.querySelector('.column.left .blocks');
+  blocksContainer.style.position = 'static';
+  blocksContainer.style.height = 'auto';
+  blocksContainer.style.display = 'block';
+
+  // Show and reset all blocks
+  blocks.forEach(block => {
+      block.style.display = 'block';
+      block.style.position = 'static';
+      block.style.top = 'auto';
+      block.style.left = 'auto';
+      block.style.transform = 'none';
+      block.style.zIndex = 'auto';
+      block.style.animation = 'none'; // Stop blinking
+  });
+
+  currentBlock = null; // Clear the current block reference
 }
 
 startBtn.addEventListener('click', () => {
@@ -148,7 +186,11 @@ function restartGame() {
     drawWheel();
 }
 
-restartBtn.addEventListener('click', restartGame);
+document.getElementById('restartBtn').addEventListener('click', function() {
+  stopHighlightingBlocks(); // This function should clear any highlight effects
+  resetBlockPositions();
+  restartGame(); // Call this function to reset the game state
+});
 
 // Initial draw
 drawWheel();
@@ -242,6 +284,8 @@ function updateBlocks() {
   document.getElementById('refreshBtn').addEventListener('click', function() {
     console.log('Refresh button clicked'); // For debugging: Check if event is triggered
     resetBlocks();
-    stopHighlightingBlocks();
+    stopHighlightingBlocks(); // This function should clear any highlight effects
+    resetBlockPositions();
+    restartGame(); // Call this function to reset the game state
   });
 
