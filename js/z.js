@@ -54,68 +54,52 @@ function spinWheel() {
         angle += speed;
         drawWheel();
         if (speed <= 0) {
-          clearInterval(spin);
-          highlightBlock(); // This function will set the currentBlock to the stopped block
-  
-          // Get the color of the currentBlock
-          let currentColor = currentBlock.style.backgroundColor;
-  
-          // Check if there is a block with text (non-empty) and a matching color
-          let nonEmptyBlocksWithMatchingColor = Array.from(blocks).filter(block => {
-              let blockText = block.dataset.name.trim();
-              let blockColor = block.style.backgroundColor;
-              return blockText && blockColor === currentColor;
-          });
-  
-          if (nonEmptyBlocksWithMatchingColor.length > 0) {
-            // A non-empty block with matching color was found, so trigger fireworks
-            triggerFireworks();
+            clearInterval(spin);
+            highlightBlock();
+            triggerFireworks(); // Call the function to trigger fireworks
         } else {
-            // No non-empty block with matching color found, so spin again after a short delay
-            setTimeout(spinWheel, 2000); // 2 second delay before spinning again
-        }
-    } else {
-        speed = Math.max(speed - deceleration, 0); // Ensure speed doesn't become negative
+            speed = Math.max(speed - deceleration, 0); // Ensure speed doesn't become negative
         }
     }, 1000 / 60); // 60 frames per second
 }
+
 function triggerFireworks() {
-  // Select the .updiv element
-  const updiv = document.querySelector('.updiv');
-  // Select the inputs container
-  const inputsContainer = document.querySelector('.inputs-container');
+    // Select the .updiv element
+    const updiv = document.querySelector('.updiv');
+    // Select the inputs container
+    const inputsContainer = document.querySelector('.inputs-container');
 
-  if (!updiv || !inputsContainer) {
-      console.error('The required elements were not found.');
-      return;
-  }
+    if (!updiv || !inputsContainer) {
+        console.error('The required elements were not found.');
+        return;
+    }
 
-  // Select the .firework elements within .updiv
-  const fireworks = updiv.querySelectorAll('.firework');
+    // Select the .firework elements within .updiv
+    const fireworks = updiv.querySelectorAll('.firework');
 
-  // Make the .firework elements visible and change the background of .updiv to black
-  updiv.style.backgroundColor = 'black'; // Set the background color to black
-  fireworks.forEach(fw => {
-      fw.style.visibility = 'visible';
-  });
-  
-  // Hide the inputs container
-  inputsContainer.style.visibility = 'hidden';
+    // Make the .firework elements visible and change the background of .updiv to black
+    updiv.style.backgroundColor = 'black'; // Set the background color to black
+    fireworks.forEach(fw => {
+        fw.style.visibility = 'visible';
+    });
+    
+    // Hide the inputs container
+    inputsContainer.style.visibility = 'hidden';
 
-  // Set a timeout to hide the fireworks, show the inputs container, and reset the background color of .updiv after 5 seconds
-  setTimeout(() => {
-      fireworks.forEach(fw => {
-          fw.style.visibility = 'hidden';
-      });
-      updiv.style.backgroundColor = ''; // Reset the background color
-      // Show the inputs container
-      inputsContainer.style.visibility = 'visible';
-  }, 5000); // 5 seconds
+    // Set a timeout to hide the fireworks, show the inputs container, and reset the background color of .updiv after 5 seconds
+    setTimeout(() => {
+        fireworks.forEach(fw => {
+            fw.style.visibility = 'hidden';
+        });
+        updiv.style.backgroundColor = ''; // Reset the background color
+        // Show the inputs container
+        inputsContainer.style.visibility = 'visible';
+    }, 5000); // 5 seconds
 }
 
+
 function highlightBlock() {
-  let index = Math.floor((8 - (angle % (Math.PI * 2)) / (Math.PI / 4)) % 8);
-  currentBlock = blocks[index];
+    let index = Math.floor((8 - (angle % (Math.PI * 2)) / (Math.PI / 4)) % 8);
     if (currentBlock) {
         currentBlock.style.animation = 'none';
     }
@@ -126,13 +110,6 @@ function highlightBlock() {
 startBtn.addEventListener('click', () => {
     spinWheel();
 });
-
-function stopHighlightingBlocks() {
-  blocks.forEach(block => {
-      block.style.animation = 'none'; // This assumes the highlight is done via CSS animation
-  });
-  currentBlock = null; // Reset the current block
-}
 
 function restartGame() {
     // Reset angle
@@ -242,6 +219,5 @@ function updateBlocks() {
   document.getElementById('refreshBtn').addEventListener('click', function() {
     console.log('Refresh button clicked'); // For debugging: Check if event is triggered
     resetBlocks();
-    stopHighlightingBlocks();
   });
 
